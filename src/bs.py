@@ -1,7 +1,6 @@
 import psycopg2
 from config import host, password, port, user, db_name
 def create_table(json):
-    connection = None
     try:
         connection = psycopg2.connect(
             host=host,

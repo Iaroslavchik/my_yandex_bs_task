@@ -15,8 +15,24 @@ try:
         cursor.execute("""SELECT table_name FROM information_schema.tables
                     WHERE table_schema = 'public'""")
         for table in cursor.fetchall():
-            print(table[0])
+            cursor.execute(f"""DROP TABLE {table[0]};
+                            """)
 
+        cursor.execute(""" create table CATEGORY(
+                        type varchar(50) Not Null,
+                        name varchar(50) unique not null,
+                        id varchar(50) unique Not null,
+                        parentId varchar(50),
+                        updateDate date Not null
+                        );""")
+        cursor.execute(""" create table OFFER(
+                        type varchar(50) Not Null,
+                        name varchar(50) unique not null,
+                        id varchar(50) unique Not null,
+                        parentId varchar(50),
+                        price int Not null,
+                        updateDate date Not null
+                        );""")
 
 except Exception as ex:
     print("[!] ERrOR", ex)
