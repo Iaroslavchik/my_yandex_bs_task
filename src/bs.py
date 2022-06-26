@@ -1,6 +1,7 @@
 import psycopg2
 from config import host, password, port, user, db_name
 def create_table(json):
+    connection = None
     try:
         connection = psycopg2.connect(
             host=host,
@@ -19,12 +20,15 @@ def create_table(json):
                 path = i['type']
                 for j in i:
                     atribut += str(j) + ', '
+                    if i[j] == None:
+                        i[j] = 'Null'
                     if isinstance(i[j], str):
                         value += "'" + str(i[j]) + "'" + ', '
                     else:
                         value += str(i[j]) + ', '
                 atribut += 'updateDate'
                 value += "'" + str(json["updateDate"]) + "'"
+                #print(f'insert into {path}({atribut}) values ({value});')
                 cursor.execute(f'insert into {path}({atribut}) values ({value});')
 
     except Exception as ex:

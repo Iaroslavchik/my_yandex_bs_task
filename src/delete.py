@@ -22,12 +22,12 @@ try:
                         type varchar(50) Not Null,
                         name varchar(50) unique not null,
                         id varchar(50) unique Not null,
-                        parentId varchar(50),
+                        parentId varchar(50) null,
                         updateDate date Not null
                         );""")
         cursor.execute(""" create table OFFER(
                         type varchar(50) Not Null,
-                        name varchar(50) unique not null,
+                        name varchar(50) not null,
                         id varchar(50) unique Not null,
                         parentId varchar(50),
                         price int Not null,
