@@ -27,10 +27,9 @@ def create_table(json):
                 atribut += 'updateDate'
                 value += "'" + str(json["updateDate"]) + "'"
                 cursor.execute(f'insert into {path}({atribut}) values ({value});')
-            print("Table created")
 
     except Exception as ex:
-        print("[ПУПУПУ] EROOR", ex)
+        print("[!] ERrOR", ex)
     finally:
         if connection:
             connection.close()

@@ -214,8 +214,6 @@ def print_diff(expected, response):
 def test_import():
     for index, batch in enumerate(IMPORT_BATCHES):
         print(f"Importing batch {index}")
-        print(batch)
-        print()
         status, _ = request("/imports", method="POST", data=batch)
 
         assert status == 200, f"Expected HTTP status code 200, got {status}"
@@ -270,8 +268,8 @@ def test_delete():
 
 
 def test_all():
-    test_import()
-    #test_nodes()
+    #test_import()
+    test_nodes()
     #test_sales()
     #test_stats()
     #test_delete()
